@@ -8,6 +8,10 @@
         <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}
         </x-jet-nav-link>
+
+        <x-jet-nav-link href="{{ route('subscriptions.premium') }}" :active="request()->routeIs('subscriptions.premium')">
+            {{ __('Premium') }}
+        </x-jet-nav-link>
     </ul>
 
     <!-- Right navbar links -->
@@ -83,6 +87,10 @@
                             {{ __('API Tokens') }}
                         </x-jet-dropdown-link>
                     @endif
+
+                    <x-jet-dropdown-link href="{{ route('subscriptions.account') }}">
+                        {{ __('Minha Assinatura') }}
+                    </x-jet-dropdown-link>
 
                     <hr class="dropdown-divider">
 

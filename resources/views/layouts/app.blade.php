@@ -18,10 +18,13 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="{{ mix('js/dashboard.js') }}" defer></script>
+
+        {{-- Lib Stripe --}}
+        <script src="https://js.stripe.com/v3/"></script>
     </head>
     <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed font-sans antialiased">
         <div class="wrapper">
-            
+
             <!-- Navbar -->
             @livewire('navigation-menu')
             <!-- /.navbar -->
