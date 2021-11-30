@@ -4,8 +4,10 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 
-window.Vue = require('vue').default
+import Vue from 'vue';
+import VueToastify from 'vue-toastify';
 
+Vue.use(VueToastify);
 Vue.component('contact-component', require('./components/Contact.vue').default)
 
 const app = new Vue({

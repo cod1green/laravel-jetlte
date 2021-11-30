@@ -5,7 +5,7 @@
                 <div class="form__label-group">
                     <p><label for="name" class="">Nome <abbr title="Obrigatório">*</abbr></label>
                     </p>
-                </div><input v-model="formData.name" id="name" autocomplete="false" tabindex="0" class="form__input">
+                </div><input v-model="formData.name" id="name" autocomplete="false" tabindex="0" class="form__input" required>
             </div>
         </div>
         <div class="form__row">
@@ -71,6 +71,7 @@ export default {
             this.messageFail = ''
 
             this.preloader = true
+
             axios.post('/api/contact', this.formData)
                     .then(response => this.messageSuccess = 'Contato Enviado com Sucesso')
                     .catch(error => this.messageFail = 'Falha ao enviar contato')
