@@ -16,6 +16,10 @@ class EnsureUserIsSubscribed
      */
     public function handle(Request $request, Closure $next)
     {
+        if ($request->user() && $request->user()->isAdmin()) {
+            return $next($request);
+        }
+
         if ($request->user() && !$request->user()->subscribed('default')) {
             return redirect()->route('subscriptions.checkout');
         }

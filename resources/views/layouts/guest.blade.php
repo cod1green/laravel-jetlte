@@ -13,10 +13,20 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @livewireStyles
+        @stack('styles')
     </head>
     <body class="bg-light font-sans antialiased">
+    <div id="app">
         {{ $slot }}
+    </div>
+
+    <!-- Scripts -->
+    <script>window.Laravel = {!! json_encode(['tenantId' => auth()->check() ? auth()->user()->tenant_id : '']) !!}</script>
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    @stack('scripts')
+
     </body>
 </html>

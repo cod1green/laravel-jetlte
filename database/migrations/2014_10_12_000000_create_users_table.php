@@ -15,14 +15,25 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tenant_id')->constrained()->onDelete('cascade');
+            $table->uuid('uuid')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('document')->nullable();
+            $table->string('username')->nullable();
+            $table->string('email');
+            $table->string('phone')->nullable();
             $table->string('password');
+            $table->string('birth')->nullable();
+            $table->enum('sex', ['M', 'F', 'O'])->default('O');
+            $table->text('bio')->nullable();
+            $table->string('photo')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
+            // $table->enum('active', ['Y', 'N'])->default('Y');
+            $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
